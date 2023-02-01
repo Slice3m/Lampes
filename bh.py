@@ -18,7 +18,7 @@ def get_sig(modname, pattern, extra = 0, offset = 0, relative = True):
     return out - module.lpBaseOfDll if relative else out
 
 
-print("[*] Dynamically updating offsets...")
+print("[*] updating offsets...")
 dwLocalPlayer = get_sig('client.dll', rb'\x8D\x34\x85....\x89\x15....\x8B\x41\x08\x8B\x48\x04\x83\xF9\xFF', 4, 3)
 dwForceJump = get_sig('client.dll', rb'\x8B\x0D....\x8B\xD6\x8B\xC1\x83\xCa\x02', 0, 2)
 m_fFlags = 0x104
@@ -33,8 +33,9 @@ client_base = pymem.process.module_from_name(cs_process.process_handle, "client.
 localplayeraddress = cs_process.read_int(client_base + dwLocalPlayer)
 
 
-print("[*] CS:GO PID is", cs_process.process_id)
-print("[*] dwLocalPlayer is at", hex(localplayeraddress))
+print("[*] csgo pwocess ID is", cs_process.process_id)
+print("bahooper is on")
+#print("[*] dwLocalPlayer is at", hex(localplayeraddress))
 
 
 while True:
