@@ -1,4 +1,3 @@
-
 import platform
 import math
 from ctypes import *
@@ -568,7 +567,6 @@ def aim_at_target(sensitivity, va, angle):
         g_previous_tick = g_current_tick
         u32.mouse_event(0x0001, int(sx), int(sy), 0, 0)
 
-
 if __name__ == "__main__":
     if platform.architecture()[0] != '64bit':
         print('[!]64bit python required')
@@ -579,6 +577,7 @@ if __name__ == "__main__":
         nv = NetVarList()
         _sensitivity = ConVar('sensitivity')
         mp_teammates_are_enemies = ConVar('mp_teammates_are_enemies')
+    
     except Exception as e:
         print(e)
         exit(0)
