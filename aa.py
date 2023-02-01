@@ -11,12 +11,12 @@ u32 = windll.user32
 #
 
 
-g_glow = False
+#g_glow = False
 g_rcs = True
 g_aimbot = True
 g_aimbot_rcs = True
-g_aimbot_head = False
-g_aimbot_fov = 5.0 / 180.0
+g_aimbot_head = True
+g_aimbot_fov = 3.0 / 180.0
 g_aimbot_smooth = 10
 g_aimbot_key = 107
 g_triggerbot_key = 108
@@ -316,10 +316,10 @@ class NetVarList:
         self.dwMaxClients = mem.read_i32(vt.engine.function(20) + 0x07)
         self.dwState = mem.read_i32(vt.engine.function(26) + 0x07)
         self.dwButton = mem.read_i32(vt.input.function(28) + 0xC1 + 2)
-        if g_glow:
-            self.dwGlowObjectManager = mem.find_pattern("client.dll",
-                    b'\xA1\x00\x00\x00\x00\xA8\x01\x75\x4B', "x????xxxx")
-            self.dwGlowObjectManager = mem.read_i32(self.dwGlowObjectManager + 1) + 4
+        #if g_glow:
+            #self.dwGlowObjectManager = mem.find_pattern("client.dll",
+                    #b'\xA1\x00\x00\x00\x00\xA8\x01\x75\x4B', "x????xxxx")
+          #self.dwGlowObjectManager = mem.read_i32(self.dwGlowObjectManager + 1) + 4
 
 
 class Player:
@@ -628,22 +628,22 @@ if __name__ == "__main__":
                 self = Entity.get_client_entity(Engine.get_local_player())
                 fl_sensitivity = _sensitivity.get_float()
                 view_angle = Engine.get_view_angles()
-                if g_glow:
-                    glow_pointer = mem.read_i32(nv.dwGlowObjectManager)
-                    for i in range(0, Engine.get_max_clients()):
-                        entity = Entity.get_client_entity(i)
-                        if not entity.is_valid():
-                            continue
-                        if not mp_teammates_are_enemies.get_int() and self.get_team_num() == entity.get_team_num():
-                            continue
-                        entity_health = entity.get_health() / 100.0
-                        index = mem.read_i32(entity.address + nv.m_iGlowIndex) * 0x38
-                        mem.write_float(glow_pointer + index + 0x08, 1.0 - entity_health)  # r
-                        mem.write_float(glow_pointer + index + 0x0C, entity_health)        # g
-                        mem.write_float(glow_pointer + index + 0x10, 0.0)                  # b
-                        mem.write_float(glow_pointer + index + 0x14, 0.8)                  # a
-                        mem.write_i8(glow_pointer + index + 0x28, 1)
-                        mem.write_i8(glow_pointer + index + 0x29, 0)
+                #if g_glow:
+                    #glow_pointer = mem.read_i32(nv.dwGlowObjectManager)
+                    #for i in range(0, Engine.get_max_clients()):
+                       #entity = Entity.get_client_entity(i)
+                        #if not entity.is_valid():
+                            #continue
+                       # if not mp_teammates_are_enemies.get_int() and self.get_team_num() == entity.get_team_num():
+                            #continue
+                        #entity_health = entity.get_health() / 100.0
+                       # index = mem.read_i32(entity.address + nv.m_iGlowIndex) * 0x38
+                        #mem.write_float(glow_pointer + index + 0x08, 1.0 - entity_health)  # r
+                       # mem.write_float(glow_pointer + index + 0x0C, entity_health)        # g
+                       # mem.write_float(glow_pointer + index + 0x10, 0.0)                  # b
+                       # mem.write_float(glow_pointer + index + 0x14, 0.8)                  # a
+                       # mem.write_i8(glow_pointer + index + 0x28, 1)
+                        #mem.write_i8(glow_pointer + index + 0x29, 0)
                 if InputSystem.is_button_down(g_triggerbot_key):
                     cross_id = self.get_cross_index()
                     if cross_id == 0:
