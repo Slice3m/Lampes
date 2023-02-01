@@ -40,7 +40,7 @@ print("bahooper is on")
 #print("[*] dwLocalPlayer is at", hex(localplayeraddress))
 
 
-while True and not keyboard.is_pressed('F2'):
+while True and not keyboard.is_pressed('F1'):
     if keyboard.is_pressed('space'):
         flags_val = cs_process.read_int(localplayeraddress + m_fFlags)
         #print(flags_val)
