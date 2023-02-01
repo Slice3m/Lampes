@@ -6,6 +6,12 @@ import re
 
 g_exit_key = 92
 
+class InputSystem:
+    @staticmethod
+    def is_button_down(button):
+        a0 = mem.read_i32(vt.input.table + ((button >> 5) * 4) + nv.dwButton)
+        return (a0 >> (button & 31)) & 1
+
 def get_sig(modname, pattern, extra = 0, offset = 0, relative = True):
     pm = pymem.Pymem('csgo.exe')
     module = pymem.process.module_from_name(pm.process_handle, modname)
