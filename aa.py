@@ -15,9 +15,9 @@ g_glow = False
 g_rcs = True
 g_aimbot = True
 g_aimbot_rcs = True
-g_aimbot_head = True
+g_aimbot_head = False
 g_aimbot_fov = 5.0 / 180.0
-g_aimbot_smooth = 7.1
+g_aimbot_smooth = 10
 g_aimbot_key = 107
 g_triggerbot_key = 108
 g_exit_key = 92
@@ -653,7 +653,7 @@ if __name__ == "__main__":
                         u32.mouse_event(0x0002, 0, 0, 0, 0)
                         k32.Sleep(50)
                         u32.mouse_event(0x0004, 0, 0, 0, 0)
-                if g_aimbot:
+                if g_aimbot:  #and InputSystem.is_button_down(g_aimbot_key):
                     g_current_tick = self.get_tick_count()
                     if not _target.is_valid() and not get_best_target(view_angle, self):
                         continue
