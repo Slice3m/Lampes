@@ -4,13 +4,8 @@ import time
 import keyboard
 import re
 
-g_exit_key = 92
 
-class InputSystem:
-    @staticmethod
-    def is_button_down(button):
-        a0 = mem.read_i32(vt.input.table + ((button >> 5) * 4) + nv.dwButton)
-        return (a0 >> (button & 31)) & 1
+
 
 def get_sig(modname, pattern, extra = 0, offset = 0, relative = True):
     pm = pymem.Pymem('csgo.exe')
@@ -45,7 +40,7 @@ print("bahooper is on")
 #print("[*] dwLocalPlayer is at", hex(localplayeraddress))
 
 
-while True and not InputSystem.is_button_down(g_exit_key):
+while True and not keyboard.is_pressed('F1'):
     if keyboard.is_pressed('space'):
         flags_val = cs_process.read_int(localplayeraddress + m_fFlags)
         #print(flags_val)
