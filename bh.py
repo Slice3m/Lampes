@@ -41,7 +41,7 @@ print("bahooper is on")
 while True:
     if keyboard.is_pressed('space'):
         flags_val = cs_process.read_int(localplayeraddress + m_fFlags)
-        print(flags_val)
+        #print(flags_val)
         
         if flags_val == 256:
             cs_process.write_int(client_base + dwForceJump, GoDown)
