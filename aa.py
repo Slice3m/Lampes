@@ -11,14 +11,14 @@ u32 = windll.user32
 
 
 #g_glow = False
-g_rcs = False
+g_rcs = True
 g_aimbot = True
 g_aimbot_rcs = True
 g_aimbot_head = True
-g_aimbot_fov = 8 / 180.0
+g_aimbot_fov = 5 / 180.0
 g_aimbot_smooth = 7
 g_aimbot_key = 107
-g_triggerbot_key = 109
+g_triggerbot_key = 108
 g_exit_key = 92
 
 g_old_punch = 0
@@ -650,7 +650,7 @@ if __name__ == "__main__":
                         continue
                     
                     
-                    g_aimbot_rcs = False
+                    #g_aimbot_rcs = False
                   
                     aim_at_target(1.9, view_angle, get_target_angle(self, _target, 8))
                 #else:
@@ -666,7 +666,7 @@ if __name__ == "__main__":
                         
                         k32.Sleep(50)
                         
-                        g_aimbot_rcs = True
+                        #g_aimbot_rcs = True
                         u32.mouse_event(0x0004, 500, 500, 500, 500)
                      
 
