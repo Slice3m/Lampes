@@ -11,14 +11,14 @@ u32 = windll.user32
 
 
 #g_glow = False
-g_rcs = True
+g_rcs = False
 g_aimbot = True
 g_aimbot_rcs = True
 g_aimbot_head = True
-g_aimbot_fov = 3.0 / 180.0
-g_aimbot_smooth = 10
+g_aimbot_fov = 8 / 180.0
+g_aimbot_smooth = 7
 g_aimbot_key = 107
-g_triggerbot_key = 108
+g_triggerbot_key = 109
 g_exit_key = 92
 
 g_old_punch = 0
@@ -495,7 +495,7 @@ def get_target_angle(local_p, target, bone_id):
 
 _target = Player(0)
 _target_bone = 0
-_bones = [5, 4, 3, 0, 7, 8]
+_bones = [6, 7, 8]
 
 
 def target_set(target):
@@ -644,20 +644,40 @@ if __name__ == "__main__":
                        # mem.write_i8(glow_pointer + index + 0x28, 1)
                         #mem.write_i8(glow_pointer + index + 0x29, 0)
                 if InputSystem.is_button_down(g_triggerbot_key):
+                     
+                    g_current_tick = self.get_tick_count()
+                    if not _target.is_valid() and not get_best_target(view_angle, self):
+                        continue
+                    
+                    
+                    g_aimbot_rcs = False
+                  
+                    aim_at_target(1.9, view_angle, get_target_angle(self, _target, 8))
+                #else:
+                    #target_set(Player(0))
+                    #
                     cross_id = self.get_cross_index()
                     if cross_id == 0:
                         continue
                     cross_target = Entity.get_client_entity(cross_id - 1)
                     if self.get_team_num() != cross_target.get_team_num() and cross_target.get_health() > 0:
-                        u32.mouse_event(0x0002, 0, 0, 0, 0)
+                        
+                        u32.mouse_event(0x0002, 50, 50, 50, 50)
+                        
                         k32.Sleep(50)
-                        u32.mouse_event(0x0004, 0, 0, 0, 0)
-                if g_aimbot:  #and InputSystem.is_button_down(g_aimbot_key):
+                        
+                        g_aimbot_rcs = True
+                        u32.mouse_event(0x0004, 500, 500, 500, 500)
+                     
+
+                if g_aimbot and InputSystem.is_button_down(g_aimbot_key):
+                    #g_rcs = False
                     g_current_tick = self.get_tick_count()
                     if not _target.is_valid() and not get_best_target(view_angle, self):
                         continue
                     aim_at_target(fl_sensitivity, view_angle, get_target_angle(self, _target, _target_bone))
                 else:
+                    
                     target_set(Player(0))
                 if g_rcs:
                     current_punch = self.get_vec_punch()
