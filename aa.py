@@ -18,7 +18,7 @@ g_aimbot_head = True
 g_aimbot_fov = 5 / 180.0
 g_aimbot_smooth = 7
 g_aimbot_key = 107
-g_triggerbot_key = 110
+g_triggerbot_key = 111
 g_exit_key = 92
 
 g_old_punch = 0
