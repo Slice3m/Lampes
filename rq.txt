@@ -1,0 +1,8 @@
+pywin32
+dearpygui
+pyopengl
+glfw
+pygame
+pymem
+keyboard
+mouse
