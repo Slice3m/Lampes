@@ -29,7 +29,7 @@ def printSlow(text):
 
 def hwidcheck():
     #if hwid in r.text:
-        if 1=1:
+        if 1==1:
         printSlow("Access granted...")
         print('')
         time.sleep(.1)
