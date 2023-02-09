@@ -53,7 +53,7 @@ aim_key = 107
 aim_smooth = 8
 aim_fov = 7 / 180.0
 
-trigger_key = 108
+trigger_key = 111
 magnetic_fov = 4 /180.0
 magnetic_smooth = 2
 
