@@ -28,7 +28,8 @@ def printSlow(text):
         time.sleep(.1)
 
 def hwidcheck():
-    if hwid in r.text:
+    #if hwid in r.text:
+        if 1=1:
         printSlow("Access granted...")
         print('')
         time.sleep(.1)
