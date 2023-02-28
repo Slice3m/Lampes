@@ -37,7 +37,6 @@ def hwidcheck():
         print("Please contact (yuui#0766) for help. HWID: " + hwid)
         os.system('pause >NUL')
 
-if __name__ == "__main__":
     hwidcheck()
 
 #
