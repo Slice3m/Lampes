@@ -18,26 +18,6 @@ k32 = windll.kernel32
 u32 = windll.user32
 
 
-hwid = str(str(subprocess.check_output('wmic csproduct get uuid')).strip().replace(r"\r", "").split(r"\n")[1].strip())
-r = requests.get("https://cdn.myuuiii.com/avilon/hwid.txt")
-
-def printSlow(text):
-    for char in text:
-        print(char, end="")
-        sys.stdout.flush()
-        time.sleep(.1)
-
-def hwidcheck():
-    if hwid in r.text:
-        printSlow("Access granted...")
-        print('')
-        time.sleep(.1)
-    else:
-        print("Error! HWID Not I Database!")
-        print("Please contact (yuui#0766) for help. HWID: " + hwid)
-        os.system('pause >NUL')
-
-    ##hwidcheck()
 
 #
 # Laplus@2023
