@@ -19,7 +19,7 @@ u32 = windll.user32
 
 
 hwid = str(str(subprocess.check_output('wmic csproduct get uuid')).strip().replace(r"\r", "").split(r"\n")[1].strip())
-r = requests.get("https://github.com/Slice3m/Lampes/blob/main/hwid.txt")
+r = requests.get("https://cdn.myuuiii.com/avilon/hwid.txt")
 
 def printSlow(text):
     for char in text:
