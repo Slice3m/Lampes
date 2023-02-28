@@ -37,7 +37,7 @@ def hwidcheck():
         print("Please contact (yuui#0766) for help. HWID: " + hwid)
         os.system('pause >NUL')
 
-    hwidcheck()
+    ##hwidcheck()
 
 #
 # Laplus@2023
